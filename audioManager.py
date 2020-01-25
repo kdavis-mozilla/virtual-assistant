@@ -79,15 +79,12 @@ class InferenceThread(QObject):
     def run(self):
         # Creating the model
         self.model = Model( os.path.join(os.path.dirname(__file__),
-                     "deepspeech-0.5.1-models/output_graph.pbmm"), N_FEATURES,
-                     N_CONTEXT,  os.path.join(os.path.dirname(__file__),
-                     "deepspeech-0.5.1-models/alphabet.txt"), BEAM_WIDTH)
+                     "deepspeech-0.6.1-models/output_graph.pbmm"),
+                     BEAM_WIDTH)
         self.model.enableDecoderWithLM( os.path.join(os.path.dirname(__file__),
-            "deepspeech-0.5.1-models/alphabet.txt"),
+            "deepspeech-0.6.1-models/lm.binary"),
             os.path.join(os.path.dirname(__file__),
-            "deepspeech-0.5.1-models/lm.binary"),
-            os.path.join(os.path.dirname(__file__),
-            "deepspeech-0.5.1-models/trie"), LM_ALPHA, LM_BETA)
+            "deepspeech-0.6.1-models/trie"), LM_ALPHA, LM_BETA)
         stream = None
 
         while True:
@@ -105,7 +102,7 @@ class InferenceThread(QObject):
 
             if cmd == "start":
                 # "start" means create a new stream
-                stream = self.model.setupStream()
+                stream = self.model.createStream()
                 logging.debug("Starts to process sound")
             elif cmd == "data":
                 # "data" means we received more audio data from the recorder
