@@ -91,9 +91,6 @@ if __name__ == "__main__":
     # Export pertinent objects to QML
     engine.rootContext().setContextProperty("chat_model", sql_conversation_model)
     engine.rootContext().setContextProperty("audio_recorder", audio_recorder)
-    # Initial webpage that will show to the user
-    searchResult = "https://www.mozilla.org/en-US/"
-    engine.rootContext().setContextProperty("searchResult", searchResult)
 
     QtWebEngine.initialize();
     qmlFile = os.path.join(os.path.dirname(__file__), "chat.qml")

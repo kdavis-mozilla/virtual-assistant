@@ -58,7 +58,7 @@ ApplicationWindow {
         id: widget
         Image {
             id: sine
-            anchors.top: parent.top
+            anchors.bottom: parent.middle
             anchors.margins: 12
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
@@ -100,20 +100,9 @@ ApplicationWindow {
                             }"
         }
 
-        WebEngineView {
-            id: internet
-            width: 639
-            height: 500
-            anchors.bottom: parent.bottom
-            anchors.margins: 250
-            x: (parent.width - width) / 2
-            y: (parent.height - height) / 2
-            url: searchResult
-        }
-
         Image {
             id: mic
-            anchors.bottom: parent.bottom
+            anchors.top: parent.middle
             anchors.margins: 12
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
