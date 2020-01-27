@@ -77,13 +77,6 @@ ApplicationWindow {
                 id: shadertime
                 from: 0; to: Math.PI*2; duration: 10000; loops: Animation.Infinite
             }
-            MouseArea {
-                anchors.fill: parent
-                onClicked:
-                {
-                    shadertime.pause();
-                }
-            }
             fragmentShader: "
                             varying highp vec2 qt_TexCoord0;
                             uniform sampler2D source;
@@ -100,23 +93,40 @@ ApplicationWindow {
                             }"
         }
 
-        Image {
-            id: mic
+        Item {
+            id: block
             anchors.top: parent.verticalCenter
             anchors.margins: 12
+            width: 72
+            height: 72
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
-            source: "mic.png"
 
+            Image {
+                id: mic
+                visible: true
+                anchors.centerIn: parent
+                source: "mic.png"
+            }
+            Image {
+                id: stop
+                visible: false
+                anchors.centerIn: parent
+                source: "stop.png"
+            }
             MouseArea {
                 anchors.fill: parent
                 onClicked:
                 {
                     audio_recorder.toggle_record();
                     if (shadertime.paused) {
+                        mic.visible = true;
+                        stop.visible = false;
                         shadertime.resume();
                     }
                     else {
+                        mic.visible = false;
+                        stop.visible = true;
                         shadertime.pause();
                     }
                 }
