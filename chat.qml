@@ -58,7 +58,7 @@ ApplicationWindow {
         id: widget
         Image {
             id: sine
-            anchors.bottom: parent.middle
+            anchors.bottom: parent.verticalCenter
             anchors.margins: 12
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
@@ -102,7 +102,7 @@ ApplicationWindow {
 
         Image {
             id: mic
-            anchors.top: parent.middle
+            anchors.top: parent.verticalCenter
             anchors.margins: 12
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
