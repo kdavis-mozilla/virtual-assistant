@@ -16,7 +16,7 @@
 
 ### Running your assistant
 
-6. On `qt-rasa` directory run `rasa run --enable-api -p 5002 -vv` to start the NLP server
+6. On `qt-rasa` directory run `rasa run --enable-api -p 5003 -vv` to start the NLP server
 7. On the main directory run `python main.py` to open the GUI
 
 \* Every time you change something in the .md files you'll have to retrain this
